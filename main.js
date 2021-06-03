@@ -1,30 +1,31 @@
 const player1 = {
-  name: 'Pit',
-  hp: 100,
+  name: 'Sai',
+  hp: 50,
   img: 'http://reactmarathon-api.herokuapp.com/assets/kitana.gif',
-  weapon: ['Nozh', 'Mech'],
+  weapon: ['Nozh'],
   attack: function () {
-    console.log(name + "Fight...")
+    console.log(player1.name + "-Fight...")
   }
 }
 
 const player2 = {
-  name: 'Jo',
-  hp: 100,
-  img: 'http://reactmarathon-api.herokuapp.com/assets/kitana.gif',
-  weapon: ['Nozh', 'Mech'],
+  name: 'Moo',
+  hp: 50,
+  img: 'http://reactmarathon-api.herokuapp.com/assets/sonya.gif',
+  weapon: ['Mech'],
   attack: function () {
-    console.log(name + "Fight...")
+    console.log(player2.name + "-Fight...")
   }
 }
 
-function createPlayer() {
+function createPlayer(name, img, hp) {
 
   const $player1 = document.createElement('div');
   $player1.classList.add('player1');
 
+
   const $root = document.querySelector('.root');
-  $root.appendChild($player1);
+  // $root.appendChild($player1);
 
   const $progressbar = document.createElement('div');
   $progressbar.classList.add('progressbar')
@@ -44,27 +45,29 @@ function createPlayer() {
   $progressbar.appendChild($life);
   $progressbar.appendChild($name);
 
-  $life.style.width = '100%';
+  $life.style.width = hp + '%';
 
   const $img = document.createElement('img');
-  $img.src = 'http://reactmarathon-api.herokuapp.com/assets/scorpion.gif';
+  $img.src = img;
 
   $character.appendChild($img);
 
   const $p = document.createElement('p');
-  $p.innerText = 'Scorpion';
+  $p.innerText = name;
   $name.appendChild($p);
+
+  const $arenas = document.querySelector('.arenas');
+  $arenas.appendChild($player1);
+  // $arenas.appendChild($player2);
+
+
+
+  $player1.appendChild($progressbar);
 
 }
 
+createPlayer(player1.name, player1.img, player1.hp);
+createPlayer(player2.name, player2.img, player2.hp);
 
-createPlayer('player1', 'SCORPION', 50);
-createPlayer('player2', 'SUB-ZERO', 80);
-
-
-
-// - Для *** div.life *** добавь свойство style.width в значение 100 %;
-// - Для *** div.name *** нужно положить текст, это имя нашего героя.
-// - Для картинки можешь взять любую ссылку из приведенных ниже.
 
 
